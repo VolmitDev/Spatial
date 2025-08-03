@@ -110,7 +110,7 @@ public interface Matter {
         for(int i = 0; i < sliceCount; i++) {
             String cn = din.readUTF();
             try {
-                Class<?> type = Class.forName(cn);
+                Class<?> type = ClassReader.find(cn);
                 MatterSlice<?> slice = matter.createSlice(matter.getClass(type), matter);
                 slice.read(din);
                 matter.putSlice(matter.getClass(type), slice);
